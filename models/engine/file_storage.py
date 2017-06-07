@@ -24,13 +24,14 @@ class FileStorage:
             json.dump(store, f)
 
     def reload(self):
+
         with open(self.__file_path, 'r') as f:
             r = json.load(f)
         from models.base_model import BaseModel
         for i in r.keys():
-            self.__objects[i] = BaseModel(r[i])
+            self.__objects[i] = BaseModel(**r[i])
         return self.__objects
-
         """
+        return {"hello" : "world"}
         self.__objects[i] = eval(BaseModel)(r[i])
         """
