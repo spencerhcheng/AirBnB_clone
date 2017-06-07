@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import json
-
+import datetime
 class FileStorage:
     def __init__(self):
         self.__file_path = 'file.json'
@@ -8,29 +8,37 @@ class FileStorage:
 
     def all(self):
         obj = self.reload()
-        """
-        return self.__objects
-        """
         return obj
 
     def new(self, obj):
-        self.__objects = obj
+        self.__objects[obj.id] = obj
 
     def save(self):
-        d = self.__objects
-        print(d)
-        """
-        js = {}
-        id = d['_FileStorage__objects']['id']
-        js[id] = d['_FileStorage__objects']
-        print(js)
-        with open("file.json", 'w') as f:
-            json.dump(obj, f)
-        """
+        new_json = {}
+        new_dict = {}
+        obj = self.__objects
+        for k, v in obj.items():
+            id = k
+            cls = v.__class__.__name__
+            new_dict = obj[k].__dict__
+        new_json[id] = new_dict
+        new_dict.update({'__class__': cls})
+        for k, v in new_json[id].items():
+            if isinstance(v, datetime.datetime):
+                new_dict.update({k : str(v)})
+            else:
+                new_dict.update({k : v})
+        new_json[id] = new_dict
+        with open(self.__file_path, 'w') as f:
+            json.dump(new_json, f)
+
     def reload(self):
-        try:
-            with open("file.json", 'r') as f:
-                rd = json.load(f)
-        except ValueError:
-            return {}
+        """
+        with open("file.json", 'r') as f:
+            rd = json.load(f)
+
+        print("---------")
+        print(rd)
         return rd
+        """
+        return {"hello" : "world"}
