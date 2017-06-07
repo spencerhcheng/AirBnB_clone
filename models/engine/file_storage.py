@@ -33,12 +33,10 @@ class FileStorage:
             json.dump(new_json, f)
 
     def reload(self):
-        """
         with open("file.json", 'r') as f:
             rd = json.load(f)
 
-        print("---------")
+        print("hi ---------")
         print(rd)
-        return rd
-        """
+        
         return {"hello" : "world"}
