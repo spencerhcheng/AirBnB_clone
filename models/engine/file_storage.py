@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import json
 import datetime
+import os.path
 
 class FileStorage:
     def __init__(self):
@@ -19,19 +20,20 @@ class FileStorage:
         obj = self.__objects
         for i in self.__objects.keys():
             temp = self.__objects[i].to_json()
-        store[i] = temp
-        with open(self.__file_path, 'w+') as f:
+            store[i] = temp
+        """
+        if (os.path.exists(self.__file_path)):
+        """
+        with open(self.__file_path, 'w') as f:
             json.dump(store, f)
 
     def reload(self):
-
-        with open(self.__file_path, 'r') as f:
-            r = json.load(f)
-        from models.base_model import BaseModel
-        for i in r.keys():
-            self.__objects[i] = BaseModel(**r[i])
-        return self.__objects
-        """
-        return {"hello" : "world"}
-        self.__objects[i] = eval(BaseModel)(r[i])
-        """
+        if (os.path.exists(self.__file_path)):
+            with open(self.__file_path, 'r') as f:
+                r = json.load(f)
+            from models.base_model import BaseModel
+            for i in r.keys():
+                self.__objects[i] = BaseModel(**r[i])
+            return self.__objects
+        else:
+            return {}
