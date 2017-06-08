@@ -81,6 +81,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_update(self, args):
+        """Updates the key/value pair of an instance\nformat - update <class> <id> <key> <value>\n"""
         if not args:
             print("** class name missing **")
         else:
@@ -94,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
             else:
                 if s[0] in classes:
                     obj = storage.all()
-                    del obj[s[1]]
+                    setattr(obj[s[1]], s[2], s[3])
                     storage.save()
                 else:
                     print("** class doesn't exist **")
