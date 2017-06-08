@@ -34,6 +34,11 @@ class FileStorage:
             from models.user import User
 
             for i in r.keys():
+                r[i]['created_at'] = datetime.datetime.strptime(r[i]['created_at'], self.dt_format)
+                try:
+                    r[i]["updated_at"] = datetime.datetime.strptime(r[i]["updated_at"], self.dt_format)
+                except:
+                    pass
                 if r[i]["__class__"] == "BaseModel":
                     self.__objects[i] = BaseModel(**r[i])
                 if r[i]["__class__"] == "User":
