@@ -41,9 +41,3 @@ class FileStorage:
             return self.__objects
         else:
             return {}
-
-
-        """
-        return {"hello" : "world"}
-        self.__objects[i] = eval(BaseModel)(r[i])
-        """
