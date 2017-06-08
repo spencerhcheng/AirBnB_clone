@@ -37,7 +37,10 @@ class FileStorage:
                     r[i]["updated_at"] = datetime.datetime.strptime(r[i]["updated_at"], self.dt_format)
                 except:
                     pass
-                self.__objects[i] = BaseModel(**r[i])
+                if r[i]["__class__"] == "BaseModel":
+                    self.__objects[i] = BaseModel(**r[i])
+                if r[i]["__class__"] == "User":
+                    self.__objects[i] = User(**r[i])
             return self.__objects
         else:
             return {}
