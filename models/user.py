@@ -12,6 +12,7 @@ class User(BaseModel):
 
     def __init__(self, *args, **kwargs):
         '''method: init'''
+<<<<<<< HEAD
         super().__init__(self)
         if (kwargs.get('id') is not None):
             self.email = kwargs.get('email')
@@ -19,6 +20,12 @@ class User(BaseModel):
             self.first_name = kwargs.get('first_name')
             self.last_name = kwargs.get('last_name')
         else:
+=======
+        if (kwargs.get('id') is not None):
+            self.__dict__ = kwargs
+        else:
+            super().__init__(self)
+>>>>>>> b64a7da07769e187b5f679f197dc94ca41fe7da3
             self.email = ""
             self.password = ""
             self.first_name = ""
