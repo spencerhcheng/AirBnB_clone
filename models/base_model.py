@@ -9,6 +9,8 @@ from models import storage
 
 class BaseModel:
     """class BaseModel"""
+    dt_format = '%Y-%m-%dT%H:%M:%S.%f'
+
     def __init__(self, *args, **kwargs):
         """init"""
         if (kwargs.get('id') is not None):
@@ -21,15 +23,17 @@ class BaseModel:
     def save(self):
         """public instance method: save"""
         """upate time and save object to json file"""
-        self.updated_at = str(datetime.datetime.now())
+        self.updated_at = datetime.datetime.now()
         storage.save()
 
     def to_json(self):
         """public instance method: to_json """
         """creates a copy of self.__dict__ and update with atribute __class__"""
         new_dict = self.__dict__.copy()
-        new_dict.update({'created_at': str(self.created_at)})
+        new_dict.update({'created_at': self.created_at.strftime(self.dt_format)})
         new_dict.update({'__class__': str(self.__class__.__name__)})
+        if hasattr(self, 'updated_at'):
+            new_dict.update({'updated_at':self.updated_at.strftime(self.dt_format)})
         return new_dict
 
     def __str__(self):
