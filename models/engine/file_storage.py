@@ -28,8 +28,13 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 r = json.load(f)
             from models.base_model import BaseModel
+            from models.user import User
+
             for i in r.keys():
-                self.__objects[i] = BaseModel(**r[i])
+                if r[i]["__class__"] == "BaseModel":
+                    self.__objects[i] = BaseModel(**r[i])
+                if r[i]["__class__"] == "User":
+                    self.__objects[i] = User(**r[i])
             return self.__objects
         else:
             return {}
