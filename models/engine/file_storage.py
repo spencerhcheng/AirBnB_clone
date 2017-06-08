@@ -17,14 +17,10 @@ class FileStorage:
 
     def save(self):
         store = {}
-        obj = self.__objects
         for i in self.__objects.keys():
             temp = self.__objects[i].to_json()
             store[i] = temp
-        """
-        if (os.path.exists(self.__file_path)):
-        """
-        with open(self.__file_path, 'w') as f:
+        with open(self.__file_path, 'w+') as f:
             json.dump(store, f)
 
     def reload(self):
