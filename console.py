@@ -35,8 +35,9 @@ class HBNBCommand(cmd.Cmd):
                 print("** class name missing **")
             else:
                 if s[0] in classes:
-                    cls = classes[s[0]]()
-                    cls.save()
+                    inst = classes[s[0]]()
+                    inst.save()
+                    print(inst.id)
                 else:
                     print("** class doesn't exist **")
 
@@ -56,7 +57,8 @@ class HBNBCommand(cmd.Cmd):
             else:
                 if s[0] in classes:
                     obj = storage.all()
-                    print(obj[s[1]])
+                    key = str(s[0]) + '.' + str(s[1])
+                    print(obj[key])
                 else:
                     print("** class doesn't exist **")
 
@@ -75,14 +77,25 @@ class HBNBCommand(cmd.Cmd):
             else:
                 if s[0] in classes:
                     obj = storage.all()
-                    del obj[s[1]]
+                    key = str(s[0]) + '.' + str(s[1])
+                    del obj[key]
                     storage.save()
                 else:
                     print("** class doesn't exist **")
 
     def do_all(self, args):
         """Prints all instances in str format based on classname or not:\nformat(1) - all\nformat(2) all <classname>\n"""
-        pass
+        s = args.split()
+        obj = storage.all()
+        try:
+            s[0]
+            for k in obj.keys():
+                obj_cls = (obj[k].__class__.__name__)
+                if (obj_cls == s[0]):
+                    print(obj[k])
+        except:
+            for k in obj.keys():
+                print(obj[k])
 
     def do_update(self, args):
         """Updates the key/value pair of an instance\nformat - update <class> <id> <key> <value>\n"""
@@ -99,8 +112,12 @@ class HBNBCommand(cmd.Cmd):
             else:
                 if s[0] in classes:
                     obj = storage.all()
-                    setattr(obj[s[1]], s[2], s[3])
-                    storage.save()
+                    key = str(s[0]) + '.' + str(s[1])
+                    if hasattr(obj[key], s[2]):
+                        setattr(obj[key], s[2], s[3])
+                        storage.save()
+                    else:
+                        print("** attribute doesn't exist **")
                 else:
                     print("** class doesn't exist **")
 
@@ -108,5 +125,5 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 if __name__ == '__main__':
-    classes = {'BaseModel': BaseModel, 'State': State, 'City': City, 'Place': Place, 'User': User}
+    classes = {'BaseModel': BaseModel, 'State': State, 'City': City, 'User': User}
     HBNBCommand().cmdloop()
