@@ -34,8 +34,8 @@ class FileStorage:
             from models.user import User
 
             for i in r.keys():
-                r[i]['created_at'] = datetime.datetime.strptime(r[i]['created_at'], self.dt_format)
                 try:
+                    r[i]['created_at'] = datetime.datetime.strptime(r[i]['created_at'], self.dt_format)
                     r[i]["updated_at"] = datetime.datetime.strptime(r[i]["updated_at"], self.dt_format)
                 except:
                     pass
