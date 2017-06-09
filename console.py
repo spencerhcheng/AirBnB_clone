@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 import cmd
 from models.base_model import BaseModel
+from models.city import City
+from models.amenity import Amenity
+from models.state import State
+from models.user import User
 from models.engine.file_storage import FileStorage
 from models import storage
 
@@ -104,5 +108,5 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 if __name__ == '__main__':
-    classes = {'BaseModel': BaseModel}
+    classes = {'BaseModel': BaseModel, 'State': State, 'City': City, 'Place': Place, 'User': User}
     HBNBCommand().cmdloop()
