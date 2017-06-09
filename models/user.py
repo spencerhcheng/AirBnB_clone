@@ -9,6 +9,10 @@ from models import storage
 
 class User(BaseModel):
     '''class User'''
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""
 
     def __init__(self, *args, **kwargs):
         '''method: init'''
@@ -16,8 +20,3 @@ class User(BaseModel):
             self.__dict__ = kwargs
         else:
             super().__init__(self)
-            self.email = ""
-            self.password = ""
-            self.first_name = ""
-            self.last_name = ""
-            storage.new(self)

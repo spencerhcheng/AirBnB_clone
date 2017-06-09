@@ -15,7 +15,8 @@ class FileStorage:
         return obj
 
     def new(self, obj):
-        self.__objects[obj.id] = obj
+        key = str(obj.__class__.__name__) + '.' + str(obj.id)
+        self.__objects[key] = obj
 
     def save(self):
         store = {}
@@ -34,8 +35,8 @@ class FileStorage:
             from models.user import User
 
             for i in r.keys():
-                r[i]['created_at'] = datetime.datetime.strptime(r[i]['created_at'], self.dt_format)
                 try:
+                    r[i]['created_at'] = datetime.datetime.strptime(r[i]['created_at'], self.dt_format)
                     r[i]["updated_at"] = datetime.datetime.strptime(r[i]["updated_at"], self.dt_format)
                 except:
                     pass
