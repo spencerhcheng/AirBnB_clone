@@ -136,42 +136,63 @@ class HBNBCommand(cmd.Cmd):
             self.do_all("BaseModel")
         elif args == '.count()':
             print(self.get_instanceCount("BaseModel"))
+        elif args[0:5] == '.show':
+            arg = 'BaseModel' + ' ' + args[7:-2]
+            self.do_show(arg)
 
     def do_User(self, args):
         if args == '.all()':
             self.do_all("User")
         elif args == '.count()':
             print(self.get_instanceCount("User"))
+        elif args[0:5] == '.show':
+            arg = 'User' + ' ' + args[7:-2]
+            self.do_show(arg)
 
     def do_State(self, args):
         if args == '.all()':
             self.do_all("State")
         elif args == '.count()':
             print(self.get_instanceCount("State"))
+        elif args[0:5] == '.show':
+            arg = 'State' + ' ' + args[7:-2]
+            self.do_show(arg)
 
     def do_City(self, args):
         if args == '.all()':
             self.do_all("City")
         elif args == '.count()':
             print(self.get_instanceCount("City"))
+        elif args[0:5] == '.show':
+            arg = 'State' + ' ' + args[7:-2]
+            self.do_show(arg)
 
     def do_Place(self, args):
         if args == '.all()':
             self.do_all("Place")
         elif args == '.count()':
             print(self.get_instanceCount("Place"))
+        elif args[0:5] == '.show':
+            arg = 'Place' + ' ' + args[7:-2]
+            self.do_show(arg)
 
     def do_Amenity(self, args):
         if args == '.all()':
             self.do_all("Amenity")
         elif args == '.count()':
             print(self.get_instanceCount("Amenity"))
+        elif args[0:5] == '.show':
+            arg = 'Amenity' + ' ' + args[7:-2]
+            self.do_show(arg)
 
     def do_Review(self, args):
         if args == '.all()':
             self.do_all("Review")
         elif args == '.count()':
             print(self.get_instanceCount("Review"))
+        elif args[0:5] == '.show':
+            arg = 'Review' + ' ' + args[7:-2]
+            self.do_show(arg)
 
     def emptyline(self):
         pass
