@@ -6,7 +6,6 @@ from models import storage
 
 """module: class BaseModel"""
 
-
 class BaseModel:
     """class BaseModel"""
     dt_format = '%Y-%m-%dT%H:%M:%S.%f'
@@ -14,6 +13,11 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """init"""
         if (kwargs.get('id') is not None):
+            if 'created_at' in kwargs:
+                try:
+                    kwargs['created_at'] = datetime.datetime.strptime(kwargs['created_at'], self.dt_format)
+                except:
+                    pass
             self.__dict__ = kwargs
         else:
             self.id = str(uuid.uuid4())
