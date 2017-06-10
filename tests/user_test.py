@@ -24,6 +24,18 @@ class TestUser(unittest.TestCase):
         delattr(self.user, "name")
         self.assertFalse(hasattr(self.user, "name"))
         self.assertEqual(self.user.__class__.__name__, "User")
+        self.assertEqual(self.user.email,"")
+        self.assertEqual(self.user.password,"")
+        self.assertEqual(self.user.first_name,"")
+        self.assertEqual(self.user.last_name,"")
+        self.user.email="betty@holbertonschool.com"
+        self.user.password="dw82deg6d2dc"
+        self.user.first_name="Betty"
+        self.user.last_name="Holberton"
+        self.assertEqual(self.user.email,"betty@holbertonschool.com")
+        self.assertEqual(self.user.password,"dw82deg6d2dc")
+        self.assertEqual(self.user.first_name,"Betty")
+        self.assertEqual(self.user.last_name,"Holberton")
 
     def testmethod(self):
         """Testing the methods of User"""
