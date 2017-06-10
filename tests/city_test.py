@@ -4,8 +4,8 @@ from models.city import City
 """module: user_test"""
 
 
-class TestUser(unittest.TestCase):
-    """Class: TestUser"""
+class TestCity(unittest.TestCase):
+    """Class: TestCity"""
     def setUp(self):
         """instance setup"""
         self.city = City()
