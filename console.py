@@ -121,6 +121,34 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** class doesn't exist **")
 
+    def do_BaseModel(self, args):
+        if args == '.all()':
+            self.do_all("BaseModel")
+
+    def do_User(self, args):
+        if args == '.all()':
+            self.do_all("User")
+
+    def do_State(self, args):
+        if args == '.all()':
+            self.do_all("State")
+
+    def do_City(self, args):
+        if args == '.all()':
+            self.do_all("City")
+
+    def do_Place(self, args):
+        if args == '.all()':
+            self.do_all("Place")
+
+    def do_Amenity(self, args):
+        if args == '.all()':
+            self.do_all("Amenity")
+
+    def do_Review(self, args):
+        if args == '.all()':
+            self.do_all("Review")
+
     def emptyline(self):
         pass
 
