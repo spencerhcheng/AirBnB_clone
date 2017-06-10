@@ -17,6 +17,16 @@ class HBNBCommand(cmd.Cmd):
     prompt = '(hbnb) '
     file = None
 
+    @classmethod
+    def get_instanceCount(self, clsname=""):
+        obj = storage.all()
+        count = 0
+        for k in obj.keys():
+            obj_cls = (obj[k].__class__.__name__)
+            if (obj_cls == clsname):
+                count += 1
+        return count
+
     def do_EOF(self, args):
         """Quit command to exit the program\n"""
         raise SystemExit
@@ -124,30 +134,44 @@ class HBNBCommand(cmd.Cmd):
     def do_BaseModel(self, args):
         if args == '.all()':
             self.do_all("BaseModel")
+        elif args == '.count()':
+            print(self.get_instanceCount("BaseModel"))
 
     def do_User(self, args):
         if args == '.all()':
             self.do_all("User")
+        elif args == '.count()':
+            print(self.get_instanceCount("User"))
 
     def do_State(self, args):
         if args == '.all()':
             self.do_all("State")
+        elif args == '.count()':
+            print(self.get_instanceCount("State"))
 
     def do_City(self, args):
         if args == '.all()':
             self.do_all("City")
+        elif args == '.count()':
+            print(self.get_instanceCount("City"))
 
     def do_Place(self, args):
         if args == '.all()':
             self.do_all("Place")
+        elif args == '.count()':
+            print(self.get_instanceCount("Place"))
 
     def do_Amenity(self, args):
         if args == '.all()':
             self.do_all("Amenity")
+        elif args == '.count()':
+            print(self.get_instanceCount("Amenity"))
 
     def do_Review(self, args):
         if args == '.all()':
             self.do_all("Review")
+        elif args == '.count()':
+            print(self.get_instanceCount("Review"))
 
     def emptyline(self):
         pass
