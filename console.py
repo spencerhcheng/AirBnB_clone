@@ -121,13 +121,12 @@ class HBNBCommand(cmd.Cmd):
                 print("** instance id missing **")
             else:
                 if s[0] in classes:
+                    print("HIII")
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
-                    if hasattr(obj[key], s[2]):
-                        setattr(obj[key], s[2], s[3])
-                        storage.save()
-                    else:
-                        print("** attribute doesn't exist **")
+                    print("made it here")
+                    setattr(obj[key], s[2], s[3])
+                    storage.save()
                 else:
                     print("** class doesn't exist **")
 
@@ -143,7 +142,19 @@ class HBNBCommand(cmd.Cmd):
         elif args[0:8] == '.destroy':
             arg = "BaseModel" + ' ' + args[10:-2]
             self.do_destroy(arg)
-
+        elif args[0:7] == '.update':
+            print("hey")
+            print(args[8:-2])
+            s = args[8:-1].split()
+            print("s[0]".format(s[0]))
+            print("s[1]".format(s[1]))
+            print("s[2]".format(s[2]))
+            s = s[0].replace('"', "")
+            s = s.replace(',',"")
+            print("The value for s: {}".format(s))
+            arg = "BaseModel" + '.' + s + s[1] + s[2]
+            print(arg)
+            self.do_update(arg)
 
     def do_User(self, args):
         """(1): User.all()\n(2): User.count()\n(3): User.show(<id>)\n(4): User.destroy(<id>)\n"""
