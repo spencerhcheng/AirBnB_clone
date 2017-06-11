@@ -5,6 +5,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.state import State
 from models.user import User
+from models.review import Review
 from models.engine.file_storage import FileStorage
 from models import storage
 
@@ -263,5 +264,5 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     classes = {'BaseModel': BaseModel, 'State': State, 'City': City,
-               'User': User}
+               'User': User, 'Amenity': Amenity, 'Review': Review}
     HBNBCommand().cmdloop()
