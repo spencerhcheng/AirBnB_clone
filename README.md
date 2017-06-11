@@ -83,6 +83,7 @@ $ git clone https://github.com/lisale0/AirBnB_clone
 ## Example of Use
 Run the executable `./console.py`
 ```
+```
 vagrant@vagrant$ ./console.py
 (hbnb) help
 
