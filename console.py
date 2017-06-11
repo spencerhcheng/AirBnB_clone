@@ -68,7 +68,10 @@ class HBNBCommand(cmd.Cmd):
                 if s[0] in classes:
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
-                    print(obj[key])
+                    try:
+                        print(obj[key])
+                    except:
+                        print("** no instance found **")
                 else:
                     print("** class doesn't exist **")
 
@@ -80,16 +83,21 @@ class HBNBCommand(cmd.Cmd):
             s = args.split()
             if not s[0]:
                 print("** class name missing **")
-            try:
-                s[1]
-            except Exception:
+            elif not s[1]:
                 print("** instance id missing **")
+            elif not s[2]:
+                print("** attribute name missing **")
+            elif not s[3]:
+                print("** value missing **")
             else:
                 if s[0] in classes:
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
-                    del obj[key]
-                    storage.save()
+                    try:
+                        del obj[key]
+                        storage.save()
+                    except:
+                        print("**Booo**")
                 else:
                     print("** class doesn't exist **")
 
@@ -99,6 +107,8 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all()
         try:
             s[0]
+            if not s[0] in classes:
+                print("** class doesn't exist **")
             for k in obj.keys():
                 obj_cls = (obj[k].__class__.__name__)
                 if (obj_cls == s[0]):
@@ -117,16 +127,25 @@ class HBNBCommand(cmd.Cmd):
                 print("** class name missing **")
             try:
                 s[1]
-            except Exception:
+            except:
                 print("** instance id missing **")
+            try:
+                s[2]
+            except:
+                print("** attribute name missing **")
+            try:
+                s[3]
+            except:
+                print("** value missing **")
             else:
                 if s[0] in classes:
-                    print("HIII")
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
-                    print("made it here")
-                    setattr(obj[key], s[2], s[3])
-                    storage.save()
+                    try:
+                        setattr(obj[key], s[2], s[3])
+                        storage.save()
+                    except:
+                        print("** no instance found **")
                 else:
                     print("** class doesn't exist **")
 
