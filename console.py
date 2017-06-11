@@ -143,17 +143,14 @@ class HBNBCommand(cmd.Cmd):
             arg = "BaseModel" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            print("hey")
-            print(args[8:-2])
             s = args[8:-1].split()
-            print("s[0]".format(s[0]))
-            print("s[1]".format(s[1]))
-            print("s[2]".format(s[2]))
-            s = s[0].replace('"', "")
-            s = s.replace(',',"")
-            print("The value for s: {}".format(s))
-            arg = "BaseModel" + '.' + s + s[1] + s[2]
-            print(arg)
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',',"")
+            s02 = s[1].replace('"', '')
+            s02 = s02.replace(',', '')
+            s03 = s[2].replace('"', '')
+            s03 = s03.replace(',', '')
+            arg = "BaseModel" + ' ' + a + ' ' + s02 + ' '+ s03
             self.do_update(arg)
 
     def do_User(self, args):
