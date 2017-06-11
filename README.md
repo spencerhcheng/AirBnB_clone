@@ -97,6 +97,7 @@ BaseModel  EOF   Review  User   create  help     show
 [City] (4af7890c-007f-42ff-97d8-074214f1094f) {'id': '4af7890c-007f-42ff-97d8-074214f1094f', 'updated_at': datetime.datetime(2017, 6, 11, 1, 6, 39, 679386), '__class__': 'City', 'created_at': datetime.datetime(2017, 6, 11, 1, 6, 39, 679362)}
 (hbnb)$
 ```
+
 ## Notes
 Other functionalities are currently in development.
 
