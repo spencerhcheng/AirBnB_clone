@@ -33,6 +33,11 @@ class FileStorage:
                 r = json.load(f)
             from models.base_model import BaseModel
             from models.user import User
+            from models.state import State
+            from models.city import City
+            from models.place import Place
+            from models.amenity import Amenity
+            from models.review import Review
 
             for i in r.keys():
                 try:
@@ -42,8 +47,18 @@ class FileStorage:
                     pass
                 if r[i]["__class__"] == "BaseModel":
                     self.__objects[i] = BaseModel(**r[i])
-                if r[i]["__class__"] == "User":
+                elif r[i]["__class__"] == "User":
                     self.__objects[i] = User(**r[i])
+                elif r[i]["__class__"] == "State":
+                    self.__objects[i] = State(**r[i])
+                elif r[i]["__class__"] == "City":
+                    self.__objects[i] = City(**r[i])
+                elif r[i]["__class__"] == "Place":
+                    self.__objects[i] = Place(**r[i])
+                elif r[i]["__class__"] == "Amenity":
+                    self.__objects[i] = Amenity(**r[i])
+                elif r[i]["__class__"] == "Review":
+                    self.__objects[i] = Review(**r[i])
             return self.__objects
         else:
             return {}

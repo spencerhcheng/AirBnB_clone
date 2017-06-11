@@ -13,3 +13,9 @@ class Place(BaseModel):
     latitude = 0.0
     longitude = 0.0
     amenity_ids = []
+
+    def __init__(self, *args, **kwargs):
+        if (kwargs.get('id') is not None):
+            self.__dict__ = kwargs
+        else:
+            super().__init__(self)
