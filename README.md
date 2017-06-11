@@ -3,7 +3,7 @@
 This is a command interpreter to manage AirBnB objects. This is the first step towards building your full web application: the AirBnB clone. 
 
 ## Environment
-Our Monty interpreter has been tested on Ubuntu 14.05.5 LTS
+Our AirBnB Clone has been tested on Ubuntu 14.05.5 LTS
 
 Tests done in VirtualBox on [Ubuntu](https://atlas.hashicorp.com/ubuntu/boxes/trusty64) via [Vagrant](https://www.vagrantup.com/)(1.9.1)
 
