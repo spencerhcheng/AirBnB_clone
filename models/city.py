@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+"""module: city"""
 from models.base_model import BaseModel
 from models.state import State
-"""module: city"""
 
 
 class City(BaseModel):

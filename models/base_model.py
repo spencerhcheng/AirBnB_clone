@@ -1,9 +1,9 @@
 #!/usr/bin/python3
+"""module: base_model"""
 import datetime
 import uuid
 import json
 from models import storage
-"""module: class BaseModel"""
 
 
 class BaseModel:

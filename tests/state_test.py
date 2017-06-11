@@ -19,7 +19,7 @@ class TestState(unittest.TestCase):
         self.assertTrue(hasattr(self.state, "name"))
         self.assertEqual(self.state.__class__.__name__, "State")
         self.assertEqual(self.state.name, "")
-        self.state.name="California"
+        self.state.name = "California"
         self.assertEqual(self.state.name, "California")
 
     def testmethod(self):

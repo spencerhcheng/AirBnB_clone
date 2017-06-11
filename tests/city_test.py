@@ -20,8 +20,8 @@ class TestCity(unittest.TestCase):
         self.assertEqual(self.city.__class__.__name__, "City")
         self.assertEqual(self.city.name, "")
         self.assertEqual(self.city.state_id, "")
-        self.city.name="San Francisco"
-        self.state_id="343r387"
+        self.city.name = "San Francisco"
+        self.state_id = "343r387"
         self.assertEqual(self.city.name, "San Francisco")
 
     def testmethod(self):
