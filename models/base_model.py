@@ -15,8 +15,8 @@ class BaseModel:
         if (kwargs.get('id') is not None):
             if 'created_at' in kwargs:
                 try:
-                    kwargs['created_at'] = datetime.datetime.strptime
-                    (kwargs['created_at'], self.dt_format)
+                    kwargs['created_at'] = datetime.datetime.strptime(
+                        kwargs['created_at'], self.dt_format)
                 except:
                     pass
             self.__dict__ = kwargs
@@ -34,12 +34,12 @@ class BaseModel:
     def to_json(self):
         """public instance method: to_json """
         new_dict = self.__dict__.copy()
-        new_dict.update({'created_at': self.created_at.strftime
-                         (self.dt_format)})
+        new_dict.update({'created_at':
+                         self.created_at.strftime(self.dt_format)})
         new_dict.update({'__class__': str(self.__class__.__name__)})
         if hasattr(self, 'updated_at'):
-            new_dict.update({'updated_at': self.updated_at.strftime
-                             (self.dt_format)})
+            new_dict.update({'updated_at':
+                             self.updated_at.strftime(self.dt_format)})
         return new_dict
 
     def __str__(self):
