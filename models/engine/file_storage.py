@@ -2,32 +2,40 @@
 import json
 import datetime
 import os.path
+"""module: file_storage"""
+
 
 class FileStorage:
+    """class: FileStorage"""
     dt_format = '%Y-%m-%dT%H:%M:%S.%f'
 
     def __init__(self):
+        """init"""
         self.__file_path = './file.json'
         self.__objects = {}
 
     def all(self):
+        """method: all - returns all instances of objects"""
         obj = self.reload()
         return obj
 
     def new(self, obj):
+        """method: new - created a new obj stored"""
+        """into __objects as key,value"""
         key = str(obj.__class__.__name__) + '.' + str(obj.id)
         self.__objects[key] = obj
 
     def save(self):
+        """method: save - saves all the __objects into json format serialize"""
         store = {}
         for i in self.__objects.keys():
             temp = self.__objects[i].to_json()
             store[i] = temp
-
         with open(self.__file_path, "w+") as f:
             json.dump(store, f)
 
     def reload(self):
+        """method: reload - deserialize"""
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r') as f:
                 r = json.load(f)
