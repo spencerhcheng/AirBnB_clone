@@ -75,7 +75,7 @@ Once cloned over, the repository will contain the following files:
   * ``save`` - public instance method; serializes __objects to the JSON file
   * ``reload`` - public instance method; deserializes the JSON file to __objects
 
-## How to Use
+## How to Use The Console
 First step is to clone the repository into your directory
 ```
 $ git clone https://github.com/lisale0/AirBnB_clone
@@ -95,7 +95,9 @@ BaseModel  EOF   Review  User   create  help     show
 (hbnb) create City
 4af7890c-007f-42ff-97d8-074214f1094f
 (hbnb) show City 4af7890c-007f-42ff-97d8-074214f1094f
-[City] (4af7890c-007f-42ff-97d8-074214f1094f) {'id': '4af7890c-007f-42ff-97d8-074214f1094f', 'updated_at': datetime.datetime(2017, 6, 11, 1, 6, 39, 679386), '__class__': 'City', 'created_at': datetime.datetime(2017, 6, 11, 1, 6, 39, 679362)}
+[City] (4af7890c-007f-42ff-97d8-074214f1094f) {'id': '4af7890c-007f-42ff-97d8-074214f1094f',
+ 'updated_at': datetime.datetime(2017, 6, 11, 1, 6, 39, 679386), '__class__': 'City',
+ 'created_at': datetime.datetime(2017, 6, 11, 1, 6, 39, 679362)}
 (hbnb)$
 ```
 
