@@ -83,12 +83,11 @@ class HBNBCommand(cmd.Cmd):
             s = args.split()
             if not s[0]:
                 print("** class name missing **")
-            elif not s[1]:
+
+            try:
+                s[1]
+            except:
                 print("** instance id missing **")
-            elif not s[2]:
-                print("** attribute name missing **")
-            elif not s[3]:
-                print("** value missing **")
             else:
                 if s[0] in classes:
                     obj = storage.all()
@@ -97,12 +96,13 @@ class HBNBCommand(cmd.Cmd):
                         del obj[key]
                         storage.save()
                     except:
-                        print("**Booo**")
+                        print("** no instance found **")
                 else:
                     print("** class doesn't exist **")
 
     def do_all(self, args):
-        """Prints all instances in str format based on classname or not:\nformat(1) - all\nformat(2) all <classname>\n"""
+        """Prints all instances in str format based on
+        classname or not:\nformat(1) - all\nformat(2) all <classname>\n"""
         s = args.split()
         obj = storage.all()
         try:
@@ -118,7 +118,8 @@ class HBNBCommand(cmd.Cmd):
                 print(obj[k])
 
     def do_update(self, args):
-        """Updates the key/value pair of an instance\nformat - update <class> <id> <key> <value>\n"""
+        """Updates the key/value pair of an instance\nformat
+        - update <class> <id> <key> <value>\n"""
         if not args:
             print("** class name missing **")
         else:
@@ -150,7 +151,8 @@ class HBNBCommand(cmd.Cmd):
                     print("** class doesn't exist **")
 
     def do_BaseModel(self, args):
-        """(1): BaseModel.all()\n(2): BaseModel.count()\n(3): BaseModel.show(<id>)\n(4): BaseModel.destroy(<id>)\n"""
+        """(1): BaseModel.all()\n(2): BaseModel.count()\n
+        (3): BaseModel.show(<id>)\n(4): BaseModel.destroy(<id>)\n"""
         if args == '.all()':
             self.do_all("BaseModel")
         elif args == '.count()':
@@ -162,21 +164,19 @@ class HBNBCommand(cmd.Cmd):
             arg = "BaseModel" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            print("hey")
-            print(args[8:-2])
             s = args[8:-1].split()
-            print("s[0]".format(s[0]))
-            print("s[1]".format(s[1]))
-            print("s[2]".format(s[2]))
-            s = s[0].replace('"', "")
-            s = s.replace(',',"")
-            print("The value for s: {}".format(s))
-            arg = "BaseModel" + '.' + s + s[1] + s[2]
-            print(arg)
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',', "")
+            s02 = s[1].replace('"', '')
+            s02 = s02.replace(',', '')
+            s03 = s[2].replace('"', '')
+            s03 = s03.replace(',', '')
+            arg = "BaseModel" + ' ' + a + ' ' + s02 + ' ' + s03
             self.do_update(arg)
 
     def do_User(self, args):
-        """(1): User.all()\n(2): User.count()\n(3): User.show(<id>)\n(4): User.destroy(<id>)\n"""
+        """(1): User.all()\n(2): User.count()\n(3): User.show(<id>)\n
+        (4): User.destroy(<id>)\n"""
         if args == '.all()':
             self.do_all("User")
         elif args == '.count()':
@@ -189,7 +189,8 @@ class HBNBCommand(cmd.Cmd):
             self.do_destroy(arg)
 
     def do_State(self, args):
-        """(1): State.all()\n(2): State.count()\n(3): State.show(<id>)\n(4): State.destroy(<id>)\n"""
+        """(1): State.all()\n(2): State.count()\n(3): State.show(<id>)\n
+        (4): State.destroy(<id>)\n"""
         if args == '.all()':
             self.do_all("State")
         elif args == '.count()':
@@ -202,7 +203,8 @@ class HBNBCommand(cmd.Cmd):
             self.do_destroy(arg)
 
     def do_City(self, args):
-        """(1): City.all()\n(2): City.count()\n(3): City.show(<id>)\n(4): City.destroy(<id>)\n"""
+        """(1): City.all()\n(2): City.count()\n(3): City.show(<id>)\n
+        (4): City.destroy(<id>)\n"""
         if args == '.all()':
             self.do_all("City")
         elif args == '.count()':
@@ -215,7 +217,8 @@ class HBNBCommand(cmd.Cmd):
             self.do_destroy(arg)
 
     def do_Place(self, args):
-        """(1): Place.all()\n(2): Place.count()\n(3): Place.show(<id>)\n(4): Place.destroy(<id>)\n"""
+        """(1): Place.all()\n(2): Place.count()\n(3): Place.show(<id>)\n
+        (4): Place.destroy(<id>)\n"""
         if args == '.all()':
             self.do_all("Place")
         elif args == '.count()':
@@ -228,7 +231,8 @@ class HBNBCommand(cmd.Cmd):
             self.do_destroy(arg)
 
     def do_Amenity(self, args):
-        """(1): Amenity.all()\n(2): Amenity.count()\n(3): Amenity.show(<id>)\n(4): Amenity.destroy(<id>)\n"""
+        """(1): Amenity.all()\n(2): Amenity.count()\n
+        (3): Amenity.show(<id>)\n(4): Amenity.destroy(<id>)\n"""
         if args == '.all()':
             self.do_all("Amenity")
         elif args == '.count()':
@@ -241,7 +245,8 @@ class HBNBCommand(cmd.Cmd):
             self.do_destroy(arg)
 
     def do_Review(self, args):
-        """(1): Review.all()\n(2): Review.count()\n(3): Review.show(<id>)\n(4): Review.destroy(<id>)\n"""
+        """(1): Review.all()\n(2): Review.count()\n(3): Review.show(<id>)\n
+        (4): Review.destroy(<id>)\n"""
         if args == '.all()':
             self.do_all("Review")
         elif args == '.count()':
@@ -257,5 +262,6 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 if __name__ == '__main__':
-    classes = {'BaseModel': BaseModel, 'State': State, 'City': City, 'User': User}
+    classes = {'BaseModel': BaseModel, 'State': State, 'City': City,
+               'User': User}
     HBNBCommand().cmdloop()

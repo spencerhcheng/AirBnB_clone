@@ -1,7 +1,10 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
+"""module: place"""
+
 
 class Place(BaseModel):
+    """Class: Place"""
     city_id = ""
     user_id = ""
     name = ""
@@ -15,6 +18,7 @@ class Place(BaseModel):
     amenity_ids = []
 
     def __init__(self, *args, **kwargs):
+        """init"""
         if (kwargs.get('id') is not None):
             self.__dict__ = kwargs
         else:
