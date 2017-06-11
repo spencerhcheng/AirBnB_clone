@@ -264,5 +264,6 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     classes = {'BaseModel': BaseModel, 'State': State, 'City': City,
-               'User': User, 'Amenity': Amenity, 'Review': Review}
+               'User': User, 'Amenity': Amenity, 'Review': Review,
+               'Place': Place}
     HBNBCommand().cmdloop()
