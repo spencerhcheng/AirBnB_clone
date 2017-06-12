@@ -46,8 +46,9 @@ class HBNBCommand(cmd.Cmd):
             if s[0] is None:
                 print("** class name missing **")
             else:
-                if s[0] in classes:
-                    inst = classes[s[0]]()
+                cls_chk = check_class(s[0])
+                if cls_chk is not None:
+                    inst = cls_chk()
                     inst.save()
                     print(inst.id)
                 else:
@@ -67,7 +68,8 @@ class HBNBCommand(cmd.Cmd):
             except Exception:
                 print("** instance id missing **")
             else:
-                if s[0] in classes:
+                cls_chk = check_class(s[0])
+                if cls_chk is not None:
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
                     try:
@@ -91,7 +93,8 @@ class HBNBCommand(cmd.Cmd):
             except:
                 print("** instance id missing **")
             else:
-                if s[0] in classes:
+                cls_chk = check_class(s[0])
+                if cls_chk is not None:
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
                     try:
@@ -109,7 +112,8 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all()
         try:
             s[0]
-            if not s[0] in classes:
+            cls_chk = check_class(s[0])
+            if cls_chk is None:
                 print("** class doesn't exist **")
             for k in obj.keys():
                 obj_cls = (obj[k].__class__.__name__)
@@ -141,7 +145,8 @@ class HBNBCommand(cmd.Cmd):
             except:
                 print("** value missing **")
             else:
-                if s[0] in classes:
+                cls_chk = check_class(s[0])
+                if cls_chk is not None:
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
                     try:
@@ -325,8 +330,17 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         pass
 
-if __name__ == '__main__':
+
+def check_class(classname):
+    """checks is user's class input is valid"""
     classes = {'BaseModel': BaseModel, 'State': State, 'City': City,
                'User': User, 'Amenity': Amenity, 'Review': Review,
                'Place': Place}
+    for k, v in classes.items():
+        if classname == k:
+            return v
+    else:
+        return None
+
+if __name__ == '__main__':
     HBNBCommand().cmdloop()
