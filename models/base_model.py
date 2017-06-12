@@ -18,6 +18,9 @@ class BaseModel:
             try:
                 kwargs['created_at'] = datetime.datetime.strptime(
                     kwargs['created_at'], self.dt_format)
+            except:
+                pass
+            try:
                 kwargs['updated_at'] = datetime.datetime.strptime(
                     kwargs['updated_at'], self.dt_format)
             except:
