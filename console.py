@@ -173,14 +173,8 @@ class HBNBCommand(cmd.Cmd):
             arg = "BaseModel" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            s = args[8:-1].split()
-            s01 = s[0].replace('"', "")
-            a = s01.replace(',', "")
-            atr = s[1].replace('"', '')
-            atr = atr.replace(',', '')
-            val = s[2].replace('"', '')
-            val = val.replace(',', '')
-            arg = "BaseModel" + ' ' + a + ' ' + atr + ' ' + val
+            ret = build_updatearg(args[8:-1])
+            arg = "BaseModel" + ' ' + ret
             self.do_update(arg)
 
     def do_User(self, args):
@@ -197,14 +191,8 @@ class HBNBCommand(cmd.Cmd):
             arg = "User" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            s = args[8:-1].split()
-            s01 = s[0].replace('"', "")
-            a = s01.replace(',', "")
-            atr = s[1].replace('"', '')
-            atr = atr.replace(',', '')
-            val = s[2].replace('"', '')
-            val = val.replace(',', '')
-            arg = "User" + ' ' + a + ' ' + atr + ' ' + val
+            ret = build_updatearg(args[8:-1])
+            arg = "User" + ' ' + ret
             self.do_update(arg)
 
     def do_State(self, args):
@@ -221,14 +209,8 @@ class HBNBCommand(cmd.Cmd):
             arg = "State" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            s = args[8:-1].split()
-            s01 = s[0].replace('"', "")
-            a = s01.replace(',', "")
-            atr = s[1].replace('"', '')
-            atr = atr.replace(',', '')
-            val = s[2].replace('"', '')
-            val = val.replace(',', '')
-            arg = "State" + ' ' + a + ' ' + atr + ' ' + val
+            ret = build_updatearg(args[8:-1])
+            arg = "State" + ' ' + ret
             self.do_update(arg)
 
     def do_City(self, args):
@@ -245,14 +227,8 @@ class HBNBCommand(cmd.Cmd):
             arg = "City" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            s = args[8:-1].split()
-            s01 = s[0].replace('"', "")
-            a = s01.replace(',', "")
-            atr = s[1].replace('"', '')
-            atr = atr.replace(',', '')
-            val = s[2].replace('"', '')
-            val = val.replace(',', '')
-            arg = "City" + ' ' + a + ' ' + atr + ' ' + val
+            ret = build_updatearg(args[8:-1])
+            arg = "City" + ' ' + ret
             self.do_update(arg)
 
     def do_Place(self, args):
@@ -269,14 +245,8 @@ class HBNBCommand(cmd.Cmd):
             arg = "Place" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            s = args[8:-1].split()
-            s01 = s[0].replace('"', "")
-            a = s01.replace(',', "")
-            atr = s[1].replace('"', '')
-            atr = atr.replace(',', '')
-            val = s[2].replace('"', '')
-            val = val.replace(',', '')
-            arg = "Place" + ' ' + a + ' ' + atr + ' ' + val
+            ret = build_updatearg(args[8:-1])
+            arg = "Place" + ' ' + ret
             self.do_update(arg)
 
     def do_Amenity(self, args):
@@ -293,14 +263,8 @@ class HBNBCommand(cmd.Cmd):
             arg = "Amenity" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            s = args[8:-1].split()
-            s01 = s[0].replace('"', "")
-            a = s01.replace(',', "")
-            atr = s[1].replace('"', '')
-            atr = atr.replace(',', '')
-            val = s[2].replace('"', '')
-            val = val.replace(',', '')
-            arg = "Amenity" + ' ' + a + ' ' + atr + ' ' + val
+            ret = build_updatearg(args[8:-1])
+            arg = "Amenity" + ' ' + ret
             self.do_update(arg)
 
     def do_Review(self, args):
@@ -317,18 +281,25 @@ class HBNBCommand(cmd.Cmd):
             arg = "Review" + ' ' + args[10:-2]
             self.do_destroy(arg)
         elif args[0:7] == '.update':
-            s = args[8:-1].split()
-            s01 = s[0].replace('"', "")
-            a = s01.replace(',', "")
-            atr = s[1].replace('"', '')
-            atr = atr.replace(',', '')
-            val = s[2].replace('"', '')
-            val = val.replace(',', '')
-            arg = "Review" + ' ' + a + ' ' + atr + ' ' + val
+            ret = build_updatearg(args[8:-1])
+            arg = "Review" + ' ' + ret
             self.do_update(arg)
 
     def emptyline(self):
         pass
+
+
+def build_updatearg(arg):
+    """builds out the string for Classname.update"""
+    s = arg.split()
+    s01 = s[0].replace('"', "")
+    a = s01.replace(',', "")
+    atr = s[1].replace('"', '')
+    atr = atr.replace(',', '')
+    val = s[2].replace('"', '')
+    val = val.replace(',', '')
+    retval = a + ' ' + atr + ' ' + val
+    return retval
 
 
 def check_class(classname):
