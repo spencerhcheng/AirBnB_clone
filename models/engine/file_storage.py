@@ -67,4 +67,4 @@ class FileStorage:
                     self.__objects[i] = Review(**r[i])
             return self.__objects
         else:
-            return {}
+            return
