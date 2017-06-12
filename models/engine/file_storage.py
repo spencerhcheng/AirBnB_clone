@@ -9,8 +9,8 @@ class FileStorage:
     """class: FileStorage"""
     dt_format = '%Y-%m-%dT%H:%M:%S.%f'
 
-    self.__file_path = './file.json'
-    self.__objects = {}
+    __file_path = './file.json'
+    __objects = {}
 
     def all(self):
         """method: all - returns all instances of objects"""
