@@ -45,12 +45,8 @@ class FileStorage:
             from models.review import Review
             for i in r.keys():
                 try:
-                    r[i]['created_at'] =
-                    datetime.datetime.strptime(r[i]['created_at'],
-                                               self.dt_format)
-                    r[i]["updated_at"] =
-                    datetime.datetime.strptime(r[i]["updated_at"],
-                                               self.dt_format)
+                    r[i]['created_at'] = datetime.datetime.strptime(r[i]['created_at'], self.dt_format)
+                    r[i]["updated_at"] = datetime.datetime.strptime(r[i]["updated_at"], self.dt_format)
                 except:
                     pass
                 if r[i]["__class__"] == "BaseModel":
