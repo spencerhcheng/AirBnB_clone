@@ -7,11 +7,11 @@ from models.engine.file_storage import FileStorage
 class TestFileStorage(unittest.TestCase):
     """Class: TestFileStorage"""
     def setUp(self):
-        """setup method for FileStorage test class"""
+        """Setting up the instance(s)"""
         self.filestorage = FileStorage()
 
     def test_attrs(self):
-        """test for presence of attributes"""
+        """testing the attributes of FileStorage"""
         self.assertFalse(hasattr(self.filestorage, "random_attr"))
 
 if "__main__" == __name__:
