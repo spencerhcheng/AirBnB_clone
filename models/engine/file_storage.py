@@ -14,8 +14,7 @@ class FileStorage:
 
     def all(self):
         """method: all - returns all instances of objects"""
-        obj = self.reload()
-        return obj
+        return FileStorage.__objects
 
     def new(self, obj):
         """method: new - created a new obj stored"""
