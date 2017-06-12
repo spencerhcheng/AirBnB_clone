@@ -15,11 +15,13 @@ class BaseModel:
         if (kwargs.get('id') is not None):
             if "__class__" in kwargs:
                 del kwargs["__class__"]
-            kwargs['created_at'] = datetime.datetime.strptime(
-                kwargs['created_at'], self.dt_format)
-            if "updated_at" in kwargs:
+            try:
+                kwargs['created_at'] = datetime.datetime.strptime(
+                    kwargs['created_at'], self.dt_format)
                 kwargs['updated_at'] = datetime.datetime.strptime(
                     kwargs['updated_at'], self.dt_format)
+            except:
+                pass
             self.__dict__ = kwargs
         else:
             self.id = str(uuid.uuid4())
