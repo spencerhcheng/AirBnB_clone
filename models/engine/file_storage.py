@@ -2,12 +2,13 @@
 import json
 import datetime
 import os.path
+dds = datetime.datetime.strptime
 """module: file_storage"""
 
 
 class FileStorage:
     """class: FileStorage"""
-    dt_format = '%Y-%m-%dT%H:%M:%S.%f'
+    dtformat = '%Y-%m-%dT%H:%M:%S.%f'
 
     __file_path = './file.json'
     __objects = {}
@@ -45,8 +46,8 @@ class FileStorage:
             from models.review import Review
             for i in r.keys():
                 try:
-                    r[i]['created_at'] = datetime.datetime.strptime(r[i]['created_at'], self.dt_format)
-                    r[i]["updated_at"] = datetime.datetime.strptime(r[i]["updated_at"], self.dt_format)
+                    r[i]['created_at'] = dds(r[i]['created_at'], self.dtformat)
+                    r[i]["updated_at"] = dds(r[i]["updated_at"], self.dtformat)
                 except:
                     pass
                 if r[i]["__class__"] == "BaseModel":
