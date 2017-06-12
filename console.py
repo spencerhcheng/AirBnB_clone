@@ -145,6 +145,8 @@ class HBNBCommand(cmd.Cmd):
                     obj = storage.all()
                     key = str(s[0]) + '.' + str(s[1])
                     try:
+                        if s[3].isdigit():
+                            s[3] = int(s[3])
                         setattr(obj[key], s[2], s[3])
                         storage.save()
                     except:
@@ -169,11 +171,11 @@ class HBNBCommand(cmd.Cmd):
             s = args[8:-1].split()
             s01 = s[0].replace('"', "")
             a = s01.replace(',', "")
-            s02 = s[1].replace('"', '')
-            s02 = s02.replace(',', '')
-            s03 = s[2].replace('"', '')
-            s03 = s03.replace(',', '')
-            arg = "BaseModel" + ' ' + a + ' ' + s02 + ' ' + s03
+            atr = s[1].replace('"', '')
+            atr = atr.replace(',', '')
+            val = s[2].replace('"', '')
+            val = val.replace(',', '')
+            arg = "BaseModel" + ' ' + a + ' ' + atr + ' ' + val
             self.do_update(arg)
 
     def do_User(self, args):
@@ -189,6 +191,16 @@ class HBNBCommand(cmd.Cmd):
         elif args[0:8] == '.destroy':
             arg = "User" + ' ' + args[10:-2]
             self.do_destroy(arg)
+        elif args[0:7] == '.update':
+            s = args[8:-1].split()
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',', "")
+            atr = s[1].replace('"', '')
+            atr = atr.replace(',', '')
+            val = s[2].replace('"', '')
+            val = val.replace(',', '')
+            arg = "User" + ' ' + a + ' ' + atr + ' ' + val
+            self.do_update(arg)
 
     def do_State(self, args):
         """(1): State.all()\n(2): State.count()\n(3): State.show(<id>)\n
@@ -203,6 +215,16 @@ class HBNBCommand(cmd.Cmd):
         elif args[0:8] == '.destroy':
             arg = "State" + ' ' + args[10:-2]
             self.do_destroy(arg)
+        elif args[0:7] == '.update':
+            s = args[8:-1].split()
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',', "")
+            atr = s[1].replace('"', '')
+            atr = atr.replace(',', '')
+            val = s[2].replace('"', '')
+            val = val.replace(',', '')
+            arg = "State" + ' ' + a + ' ' + atr + ' ' + val
+            self.do_update(arg)
 
     def do_City(self, args):
         """(1): City.all()\n(2): City.count()\n(3): City.show(<id>)\n
@@ -217,6 +239,16 @@ class HBNBCommand(cmd.Cmd):
         elif args[0:8] == '.destroy':
             arg = "City" + ' ' + args[10:-2]
             self.do_destroy(arg)
+        elif args[0:7] == '.update':
+            s = args[8:-1].split()
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',', "")
+            atr = s[1].replace('"', '')
+            atr = atr.replace(',', '')
+            val = s[2].replace('"', '')
+            val = val.replace(',', '')
+            arg = "City" + ' ' + a + ' ' + atr + ' ' + val
+            self.do_update(arg)
 
     def do_Place(self, args):
         """(1): Place.all()\n(2): Place.count()\n(3): Place.show(<id>)\n
@@ -231,6 +263,16 @@ class HBNBCommand(cmd.Cmd):
         elif args[0:8] == '.destroy':
             arg = "Place" + ' ' + args[10:-2]
             self.do_destroy(arg)
+        elif args[0:7] == '.update':
+            s = args[8:-1].split()
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',', "")
+            atr = s[1].replace('"', '')
+            atr = atr.replace(',', '')
+            val = s[2].replace('"', '')
+            val = val.replace(',', '')
+            arg = "Place" + ' ' + a + ' ' + atr + ' ' + val
+            self.do_update(arg)
 
     def do_Amenity(self, args):
         """(1): Amenity.all()\n(2): Amenity.count()\n
@@ -245,6 +287,16 @@ class HBNBCommand(cmd.Cmd):
         elif args[0:8] == '.destroy':
             arg = "Amenity" + ' ' + args[10:-2]
             self.do_destroy(arg)
+        elif args[0:7] == '.update':
+            s = args[8:-1].split()
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',', "")
+            atr = s[1].replace('"', '')
+            atr = atr.replace(',', '')
+            val = s[2].replace('"', '')
+            val = val.replace(',', '')
+            arg = "Amenity" + ' ' + a + ' ' + atr + ' ' + val
+            self.do_update(arg)
 
     def do_Review(self, args):
         """(1): Review.all()\n(2): Review.count()\n(3): Review.show(<id>)\n
@@ -259,6 +311,16 @@ class HBNBCommand(cmd.Cmd):
         elif args[0:8] == '.destroy':
             arg = "Review" + ' ' + args[10:-2]
             self.do_destroy(arg)
+        elif args[0:7] == '.update':
+            s = args[8:-1].split()
+            s01 = s[0].replace('"', "")
+            a = s01.replace(',', "")
+            atr = s[1].replace('"', '')
+            atr = atr.replace(',', '')
+            val = s[2].replace('"', '')
+            val = val.replace(',', '')
+            arg = "Review" + ' ' + a + ' ' + atr + ' ' + val
+            self.do_update(arg)
 
     def emptyline(self):
         pass
