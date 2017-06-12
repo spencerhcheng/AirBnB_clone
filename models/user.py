@@ -1,9 +1,5 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
-import datetime
-import uuid
-import json
-from models import storage
 """module: class User"""
 
 
