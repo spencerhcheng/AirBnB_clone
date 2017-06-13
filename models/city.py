@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""module: city"""
 from models.base_model import BaseModel
 from models.state import State
+"""module: class City"""
 
 
 class City(BaseModel):
@@ -10,5 +10,5 @@ class City(BaseModel):
     name = ""
 
     def __init__(self, *args, **kwargs):
-        """init"""
+        """method: init"""
         super().__init__(self, *args, **kwargs)

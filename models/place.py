@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
-"""module: place"""
+"""module: class Place"""
 
 
 class Place(BaseModel):
-    """Class: Place"""
+    """class: Place"""
     city_id = ""
     user_id = ""
     name = ""
@@ -18,5 +18,5 @@ class Place(BaseModel):
     amenity_ids = []
 
     def __init__(self, *args, **kwargs):
-        """init"""
+        """method: init"""
         super().__init__(self, *args, **kwargs)

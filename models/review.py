@@ -2,7 +2,7 @@
 from models.base_model import BaseModel
 from models.place import Place
 from models.user import User
-"""module: review"""
+"""module: class Review"""
 
 
 class Review(BaseModel):
@@ -10,5 +10,5 @@ class Review(BaseModel):
     test = ""
 
     def __init__(self, *args, **kwargs):
-        """init"""
+        """method: init"""
         super().__init__(self, *args, **kwargs)

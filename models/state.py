@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 from models.base_model import BaseModel
-"""module: state"""
+"""module: class State"""
 
 
 class State(BaseModel):
@@ -8,5 +8,5 @@ class State(BaseModel):
     name = ""
 
     def __init__(self, *args, **kwargs):
-        """init"""
+        """method: init"""
         super().__init__(self, *args, **kwargs)
