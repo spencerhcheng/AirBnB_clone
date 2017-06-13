@@ -7,6 +7,8 @@ from models.user import User
 
 class Review(BaseModel):
     """class: Review"""
+    place_id = ""
+    user_id = ""
     text = ""
 
     def __init__(self, *args, **kwargs):
