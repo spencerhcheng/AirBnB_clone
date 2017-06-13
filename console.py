@@ -111,6 +111,7 @@ class HBNBCommand(cmd.Cmd):
         classname or not:\nformat(1) - all\nformat(2) all <classname>\n"""
         s = args.split()
         obj = storage.all()
+        count = 0
         try:
             s[0]
             cls_chk = check_class(s[0])
@@ -120,9 +121,13 @@ class HBNBCommand(cmd.Cmd):
                 obj_cls = (obj[k].__class__.__name__)
                 if (obj_cls == s[0]):
                     print(obj[k])
+                    count = count + 1
         except:
             for k in obj.keys():
                 print(obj[k])
+                count = count + 1
+        if count == 0:
+            print([])
 
     def do_update(self, args):
         """Updates the key/value pair of an instance\nformat
