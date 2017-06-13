@@ -9,6 +9,7 @@ from models.review import Review
 from models.place import Place
 from models.engine.file_storage import FileStorage
 from models import storage
+from datetime import datetime
 
 """module: console.py"""
 
@@ -153,6 +154,7 @@ class HBNBCommand(cmd.Cmd):
                         if s[3].isdigit():
                             s[3] = int(s[3])
                         setattr(obj[key], s[2], s[3])
+                        setattr(obj[key], "updated_at", datetime.now())
                         storage.save()
                     except:
                         print("** no instance found **")
