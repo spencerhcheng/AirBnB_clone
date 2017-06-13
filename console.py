@@ -122,12 +122,14 @@ class HBNBCommand(cmd.Cmd):
                 if (obj_cls == s[0]):
                     print(obj[k])
                     count = count + 1
+            if count == 0 and cls_chk is not None:
+                print([])
         except:
             for k in obj.keys():
                 print(obj[k])
                 count = count + 1
-        if count == 0:
-            print([])
+            if count == 0:
+                print([])
 
     def do_update(self, args):
         """Updates the key/value pair of an instance\nformat
