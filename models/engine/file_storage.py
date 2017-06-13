@@ -45,11 +45,11 @@ class FileStorage:
             from models.amenity import Amenity
             from models.review import Review
             for i in r.keys():
-                try:
+                """try:
                     r[i]['created_at'] = dds(r[i]['created_at'], self.dtformat)
                     r[i]["updated_at"] = dds(r[i]["updated_at"], self.dtformat)
                 except:
-                    pass
+                    pass"""
                 if r[i]["__class__"] == "BaseModel":
                     self.__objects[i] = BaseModel(**r[i])
                 elif r[i]["__class__"] == "User":

@@ -15,17 +15,11 @@ class BaseModel:
         if (kwargs.get('id') is not None):
             if "__class__" in kwargs:
                 del kwargs["__class__"]
-            try:
-                kwargs['created_at'] = datetime.datetime.strptime(
-                    kwargs['created_at'], self.dt_format)
-            except:
-                pass
+            kwargs['created_at'] = datetime.datetime.strptime(
+                kwargs['created_at'], self.dt_format)
             if "updated_at" in kwargs:
-                try:
-                    kwargs['updated_at'] = datetime.datetime.strptime(
-                        kwargs['updated_at'], self.dt_format)
-                except:
-                    pass
+                kwargs['updated_at'] = datetime.datetime.strptime(
+                    kwargs['updated_at'], self.dt_format)
             self.__dict__ = kwargs
         else:
             self.id = str(uuid.uuid4())
@@ -41,10 +35,8 @@ class BaseModel:
     def to_json(self):
         """public instance method: to_json """
         new_dict = self.__dict__.copy()
-        if hasattr(self, 'created_at') and isinstance(self.created_at,
-                                                      datetime.datetime):
-            new_dict.update({'created_at':
-                             self.created_at.strftime(self.dt_format)})
+        new_dict.update({'created_at':
+                         self.created_at.strftime(self.dt_format)})
         new_dict.update({'__class__': str(self.__class__.__name__)})
         if hasattr(self, 'updated_at'):
             new_dict.update({'updated_at':
