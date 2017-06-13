@@ -160,6 +160,8 @@ class HBNBCommand(cmd.Cmd):
                     try:
                         if s[3].isdigit():
                             s[3] = int(s[3])
+                        else:
+                            s[3] = s[3].replace('"', '')
                         setattr(obj[key], s[2], s[3])
                         setattr(obj[key], "updated_at", datetime.now())
                         storage.save()
