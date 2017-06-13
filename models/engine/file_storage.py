@@ -1,15 +1,11 @@
 #!/usr/bin/python3
 import json
-import datetime
 import os.path
-dds = datetime.datetime.strptime
 """module: file_storage"""
 
 
 class FileStorage:
     """class: FileStorage"""
-    dtformat = '%Y-%m-%dT%H:%M:%S.%f'
-
     __file_path = './file.json'
     __objects = {}
 
@@ -45,11 +41,6 @@ class FileStorage:
             from models.amenity import Amenity
             from models.review import Review
             for i in r.keys():
-                """try:
-                    r[i]['created_at'] = dds(r[i]['created_at'], self.dtformat)
-                    r[i]["updated_at"] = dds(r[i]["updated_at"], self.dtformat)
-                except:
-                    pass"""
                 if r[i]["__class__"] == "BaseModel":
                     self.__objects[i] = BaseModel(**r[i])
                 elif r[i]["__class__"] == "User":

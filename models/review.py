@@ -7,7 +7,7 @@ from models.user import User
 
 class Review(BaseModel):
     """class: Review"""
-    test = ""
+    text = ""
 
     def __init__(self, *args, **kwargs):
         """method: init"""
