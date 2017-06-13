@@ -18,7 +18,7 @@ class TestReview(unittest.TestCase):
         self.assertFalse(hasattr(self.review, "random_attr"))
         self.assertTrue(hasattr(self.review, "text"))
         self.assertEqual(self.review.__class__.__name__, "Review")
-        self.assertEqual(self.review.test, "")
+        self.assertEqual(self.review.text, "")
 
     def testmethod(self):
         """Testing the methods of Review"""
