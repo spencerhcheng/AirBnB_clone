@@ -16,7 +16,7 @@ class TestReview(unittest.TestCase):
         self.assertTrue(hasattr(self.review, "id"))
         self.assertFalse(hasattr(self.review, "updated_at"))
         self.assertFalse(hasattr(self.review, "random_attr"))
-        self.assertTrue(hasattr(self.review, "test"))
+        self.assertTrue(hasattr(self.review, "text"))
         self.assertEqual(self.review.__class__.__name__, "Review")
         self.assertEqual(self.review.test, "")
 
