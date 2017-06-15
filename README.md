@@ -3,7 +3,7 @@
 ## AirBnB Clone 
 
 ### Synopsis
-The goal of this AirBnB Clone project is to learn the fundamental concepts to building a web application similar to AirBnB. AirBnB. AirBnB is an online marketplace and hospitality service, enabling people to lease or rent short-term lodging.
+The objective of the AirBnB Clone project is to learn the fundamental concepts to building a web application similar to AirBnB. AirBnB. AirBnB is an online marketplace and hospitality service, enabling people to lease or rent short-term lodging.
 
 This portion of the project is the first step towards building the full web application; it includes a command interpreter (accessed through a console) for manipulating data and Holberton AirBnB (`HBNB`) objects.
 
@@ -182,6 +182,19 @@ Other functionalities are currently in development.
 
 ### To do list
 Console
+
+* for `update`, for format `update <class name> <id> <attribute name> "<attribute value>"`, deal with case if <attribute value> is more than one word.
+
+```
+DESIRED OUTPUT:
+```
+[City] (1f75d5b0-f3af-4104-8063-128dca5928f2) {'id': '1f75d5b0-f3af-4104-8063-128dca5928f2', 'updated_at': datetime.datetime(2017, 6, 15, 20, 7, 9, 581835), 'created_at': datetime.datetime(2017, 6, 15, 17, 30, 49, 887988), 'name': 'San'}
+```
+GOT:
+```
+[City] (1f75d5b0-f3af-4104-8063-128dca5928f2) {'id': '1f75d5b0-f3af-4104-8063-128dca5928f2', 'updated_at': datetime.datetime(2017, 6, 15, 20, 7, 9, 581835), 'created_at': datetime.datetime(2017, 6, 15, 17, 30, 49, 887988), 'name': 'San Francisco'}
+```
+
 * `update BaseModel + existing ID`
 GOT:
 ```
