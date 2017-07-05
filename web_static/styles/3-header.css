@@ -7,11 +7,10 @@ header {
 
 .hbnblogo {
 	float: left;
-	padding-left: 20px;
+	background-position: 20px;
 	height: 60px;
-	width: 142px;
+	width: 162px;
 	background-image: url("../images/logo.png");
 	background-repeat: no-repeat;
 	align-items: center;
-}
-	
+}	
