@@ -1,0 +1,80 @@
+.filters {
+	background: white;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+}
+
+button {	
+	position: absolute;
+	font-size: 18px;
+	color: white;
+	background-color: #FF5A5F;
+	height: 48px;
+	width: 20%;
+	border: 0;
+	border-radius: 4px;
+	float: right;
+	top: 12px;
+	right: 30px;
+}
+
+button:hover {
+	opacity: 0.9;
+}
+
+.locations {
+	position: absolute;
+	height: 100%;
+	width: 25%;
+	border-right: solid 1px #DDDDDD;
+	left: 50px;
+}
+
+.amenities{
+        position: absolute;
+        height: 100%;
+        width: 25%;
+	left: 350px;
+}	
+
+h2 {
+	text-align: left;
+}
+
+h3 {
+	position: absolute;
+	font-weight: 600;
+	bottom: 26px;
+}
+
+h4 {
+	position: absolute;
+	font-weight: 400;
+	font-size: 14px;
+	top: 16px;
+}
+
+.popover {
+	display: none;
+	position: absolute;
+	background: #FAFAFA;
+	height: 270px;
+	width: 103.7%;
+	border: solid 1px #DDDDDD;
+	border-radius: 4px;
+	right: -1px;
+	top: 56px;
+}
+
+.locations:hover .popover,
+.amenities:hover .popover
+{
+	display: block;
+}
+
+li {
+	list-style-type: none;
+	margin: 10px;
+}
